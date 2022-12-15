@@ -15,6 +15,18 @@
             conexionBD::cerrar_conexion();
 
         }
+        public function Registrar_Area($area){
+            $c = conexionBD::conexionPDO();
+            $sql = "exec SP_REGISTRAR_AREA ?";
+            $query = $c -> prepare($sql);
+            $query -> bindParam(1,$area);
+            $query -> execute();
+            if($row = $query -> fetchColumn()){
+                return $row;
+            }
+            conexionBD::cerrar_conexion();
+
+        }
     }
 
 

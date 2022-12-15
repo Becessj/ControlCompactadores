@@ -231,6 +231,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- AdminLTE App -->
 <script src="../template/dist/js/adminlte.min.js"></script>
 <script type="text/javascript" src="../utils/DataTables/datatables.min.js"></script>
-
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script scr="../js/console_area.js"></script>
 </body>
 </html>
