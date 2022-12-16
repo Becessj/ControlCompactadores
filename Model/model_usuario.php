@@ -10,7 +10,9 @@
             $query -> execute();
             $resultado = $query -> fetchAll();
             foreach($resultado as $resp){
-                $arreglo[] = $resp;
+                 if($con ==$resp['CLAVE']){
+                    $arreglo[] = $resp;
+                }
             }
             return $arreglo;
             conexionBD::cerrar_conexion();

@@ -36,8 +36,8 @@
                 <th>NOMBRE</th>
                 <th>DIRECCION</th>
                 <th>TELEFONO</th>
-                <th>EMAIL</th>
-                <th>ACCESO</th>
+                <!-- <th>EMAIL</th> -->
+                <th>ROL</th>
                 <th>Acción</th>
             </tr>
         </thead>

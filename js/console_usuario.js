@@ -1,4 +1,5 @@
 function Iniciar_Sesion(){
+    recuerdame();
     let usuario = document.getElementById('txt_usuario').value;
     let contra = document.getElementById('txt_contra').value;
     if (usuario.length == 0 || contra.length ==0){
@@ -20,13 +21,29 @@ function Iniciar_Sesion(){
     }).done(function(resp){
         let data = JSON.parse(resp);
         if(data.length>0){
-            Swal.fire({
-                icon: 'success',
-                 text: 'Mensaje de confirmación',
-                 heightAuto: false}
-               
-            )
-          
+            if(data[0][4] == "C"){
+                return Swal.fire({
+                    icon: 'warning',
+                    title:'Mensaje de advertencia',
+                    text: 'El usuario '+data[0][0]+' se encuentra inactivo',
+                     heightAuto: false}
+                ).then((result) => {
+                    // Reload the Page
+                    location.reload();
+                  });
+            }
+            if(data[0][3] != "PREDIAL"){
+                return Swal.fire({
+                    icon: 'warning',
+                    title:'Mensaje de advertencia',
+                    text: 'El usuario '+data[0][0]+' no pertenece al área de limpieza publica',
+                     heightAuto: false}
+                ).then((result) => {
+                    // Reload the Page
+                    location.reload();
+                  });
+            }
+   
             $.ajax({
                 url:'Controller/usuario/controller_crear_sesion.php',
                 type: 'POST',
@@ -66,11 +83,13 @@ function Iniciar_Sesion(){
         else{           
             Swal.fire({
                 icon: 'error',
-                title: 'UPS...',
-                 text: 'Mensaje de error',
+                title: 'ERROR!',
+                 text: 'Los datos son incorrectos',
                  heightAuto: false}
-               
-            )
+            ).then((result) => {
+                // Reload the Page
+                location.reload();
+              });
         }
     })
 
@@ -96,12 +115,12 @@ function listar_usuario(){
             {"data":"NOMBRE"},
             {"data":"DIRECCION"},
             {"data":"TELEFONO"},
-            {"data":"EMAIL"},
-            {"data":"USUARIO_CREA",render: function(data,type,row){
-                if(data=='ADMIN'){
-                return '<span class="badge bg-success">ADMIN</span>';
+           // {"data":"EMAIL"},
+            {"data":"TIPO",render: function(data,type,row){
+                if(data=='A'){
+                    return '<span class="badge bg-success">ADMINISTRADOR</span>';
                 }else{
-                return '<span class="badge bg-danger">RENTAS</span>';
+                    return '<span class="badge bg-danger">USUARIO</span>';
                 }
         }   
     },
@@ -111,7 +130,7 @@ function listar_usuario(){
         ],
   
         "language":idioma_espanol,
-        select: true
+        select: false
     });
     tbl_usuario.on('draw.td',function(){
       var PageInfo = $("#tabla_usuario").DataTable().page.info();
@@ -120,4 +139,17 @@ function listar_usuario(){
       });
     });
   
+}
+
+function recuerdame(){
+    if(rmcheck.checked && usuarioInput.value!= "" && passInput.value!=""){
+        localStorage.usuario = usuarioInput.value;
+        localStorage.pass = passInput.value;
+        localStorage.checkbox = rmcheck.value;
+    }
+    else{
+            localStorage.usuario = "";
+            localStorage.pass = "";
+            localStorage.checkbox = "";
+    }
 }

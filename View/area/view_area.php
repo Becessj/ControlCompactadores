@@ -14,15 +14,16 @@
            
             <div class="form-group">
               <label>Nombre</label>
-              <input type="text" class="form-control" placeholder="Ingresar nombre" id="txt_area_editar">
+              <input type="text" class="form-control" id="txt_area_editar" readonly>
+              <!-- <input type="text" class="form-control" id="txt_idarea" hidden> -->
             </div>
           </div>
           <div class="col-sm-12">
             <div class="form-group">
               <label>Estado</label>
-                <select  id="txt_estatus" class="form-control" >
+                <select  id="select_estatus" class="form-control" >
                     <option value="A">ACTIVO</option>
-                    <option value="I">INACTIVO</option>
+                    <option value="C">INACTIVO</option>
                 </select>
             </div>
           </div>

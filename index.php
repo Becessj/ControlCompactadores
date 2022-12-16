@@ -77,9 +77,23 @@
 <script src="template/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="template/dist/js/adminlte.min.js"></script>
-<script src="js/console_usuario.js"></script>
+<script src="js/console_usuario.js?rev=<?php echo time();?>"></script>
 <script src="js/console_area.js"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
+<script>
+  const rmcheck = document.getElementById('remember'),
+        usuarioInput = document.getElementById('txt_usuario'),
+        passInput = document.getElementById('txt_contra');
+        if (localStorage.checkbox  && localStorage.checkbox !=""){
+          rmcheck.setAttribute("checked","checked");
+          usuarioInput.value=localStorage.usuario;
+          passInput.value =localStorage.pass;
+        }
+        else{
+          rmcheck.removeAttribute("checked","checked");
+          usuarioInput.value="";
+          passInput.value ="";
+        }
+</script>
 </body>
 </html>
