@@ -32,7 +32,7 @@ function Iniciar_Sesion(){
                     location.reload();
                   });
             }
-            if(data[0][3] != "PREDIAL"){
+            if(data[0][3] != "ARBITRIOS"){
                 return Swal.fire({
                     icon: 'warning',
                     title:'Mensaje de advertencia',
