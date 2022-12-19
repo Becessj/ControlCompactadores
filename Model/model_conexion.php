@@ -1,10 +1,10 @@
 <?php
 class conexionBD{
     public function conexionPDO(){
-        $host = "PC-218\SQL2014";
+        $host = "DESKTOP-0UKIJS0\SQLEXPRESS";
         $usuario = "sa";
         $contrasena = "gpa";
-        $dbName = "RENTAS_CANCHIS";
+        $dbName = "RENTAS";
         try {
             $pdo = new PDO("sqlsrv:server=$host;database=$dbName", $usuario, $contrasena);
             $pdo -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

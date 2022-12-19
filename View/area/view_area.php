@@ -1,5 +1,5 @@
       <!-- Modal -->
-      <div class="modal fade" id="modal_editar" data-backdrop="static" data-keyboard="false" tabindex="-1″ id="MiModal" role="dialog">
+<div class="modal fade" id="modal_editar" data-backdrop="static" data-keyboard="false" tabindex="-1″ id="MiModal" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">

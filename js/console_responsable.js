@@ -1,6 +1,21 @@
 var tbl_responsable;
 function listar_responsable(){
     tbl_responsable = $("#tabla_responsable").DataTable({
+      rowCallback:function(row,data)
+      {
+        
+        if(data[2] == "Excelente")
+        {
+          $($(row).find("td")[2]).css("background-color","green");
+        }
+        else if(data[2] == "Bueno"){
+            $($(row).find("td")[2]).css("background-color","blue");
+        }
+        else{
+            $($(row).find("td")[2]).css("background-color","red");
+        }
+        
+      },
         "ordering":false,   
         "bLengthChange":true,
         "searching": { "regex": false },
@@ -23,7 +38,7 @@ function listar_responsable(){
         ],
   
         "language":idioma_espanol,
-        select: true
+        select: false
     });
     tbl_responsable.on('draw.td',function(){
       var PageInfo = $("#tabla_responsable").DataTable().page.info();
