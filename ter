@@ -1,0 +1,42 @@
+[33mcommit b2069b4d8fc05f5025c08ee98aa28a6dee1bbc8e[m[33m ([m[1;36mHEAD -> [m[1;32mmaincls[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Cristian <144996@unsaac.edu.pe>
+Date:   Sun Dec 18 22:16:42 2022 -0500
+
+    update users
+
+[33mcommit 8211fe5a0b6de64c08730389c3ebe7e3fa73af2d[m
+Author: Becessj <144996@unsaac.edu.pe>
+Date:   Sun Dec 18 18:08:53 2022 -0500
+
+    Add view person
+
+[33mcommit 8c006890a34a3df59147fafe9dfec8c61f8b1c5b[m
+Author: Cristian <144996@unsaac.edu.pe>
+Date:   Thu Dec 15 20:36:49 2022 -0500
+
+    update edit area
+
+[33mcommit fbf18396b16c548c3eabf6af966de535faa716d6[m
+Merge: bc34f4f 51a9bb8
+Author: Cristian <144996@unsaac.edu.pe>
+Date:   Thu Dec 15 09:55:24 2022 -0500
+
+    Merge branch 'master' of https://github.com/Becessj/Sistema_LimpiezaPublica
+
+[33mcommit bc34f4f7e9a896b288ea7168137587abb6f49198[m
+Author: Cristian <144996@unsaac.edu.pe>
+Date:   Thu Dec 15 09:55:07 2022 -0500
+
+    update Crud area, usuario
+
+[33mcommit 51a9bb8335177c1c366dc1fc45ddbe03f3ae2c79[m
+Author: Cristian <42221682+Becessj@users.noreply.github.com>
+Date:   Wed Dec 14 18:24:40 2022 -0500
+
+    Create README.md
+
+[33mcommit adcc55022895397c1be4d4442752cd4b9faed1e1[m
+Author: Cristian <144996@unsaac.edu.pe>
+Date:   Wed Dec 14 18:21:54 2022 -0500
+
+    First Commit

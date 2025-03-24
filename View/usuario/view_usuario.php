@@ -81,8 +81,8 @@
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Inicio</a></li>
-              <li class="breadcrumb-item active">Usuario</li>
+            <li class="breadcrumb-item"><a href="index.php" ><i class="fa fa-home"></i> Inicio</a></li>
+          <li class="breadcrumb-item active"> Usuario</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -91,41 +91,39 @@
     <!-- /.content-header -->
 
     <!-- Main content -->
-    <div class="content">
+    <section class="content">
       <div class="container-fluid">
         <div class="row">
           <!-- /.col-md-6 -->
           <div class="col-lg-12">
             <div class="card">
               <div class="card-header">
-                <h5 class="m-0">Listado de Usuarios</h5>
-                <button class="btn btn-danger btn-sm float-right" data-toggle="modal" onclick="AbrirModalRegistro()"><i class="fas fa-plus"></i>&nbsp;Nuevo registro</button>
+                  <h3 class="card-title">Listado de Usuarios</h3>
+                  <button class="btn btn-danger btn-sm float-right" data-toggle="modal" onclick="AbrirModalRegistro()"><i class="fas fa-plus"></i>&nbsp;Nuevo registro</button>
               </div>
               <div class="card-body">
-              <table id="tabla_usuario" class="display" style="width:100%">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>USUARIO</th>
-                <th>NOMBRE</th>
-                <th>DIRECCION</th>
-                <!--    <th>AREA</th>
-             <th>EMAIL</th> -->
-                <th>ROL</th>
-                <th>Acción</th>
-            </tr>
-        </thead>
-    </table>
+              <table id="tabla_usuario" style="table-layout:fixed;width: 100%" class="table tabel-display table-nowrap">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>USUARIO</th>
+                            <th>NOMBRE</th>
+                            <th>DIRECCION</th>
+                            <!--    <th>AREA</th>
+                        <th>EMAIL</th> -->
+                            <th>ROL</th>
+                            <th>Acción</th>
+                        </tr>
+                    </thead>
+               </table>
               </div>
             </div>
-
-         
           </div>
           <!-- /.col-md-6 -->
         </div>
         <!-- /.row -->
       </div><!-- /.container-fluid -->
-    </div>
+</section>
     
 <!-- Modal -->
 <div class="modal fade" id="modal_registro_usuario" data-backdrop="static" data-keyboard="false"  id="MiModal" role="dialog">
@@ -211,10 +209,12 @@
     <!-- /.content -->
     <script>
       listar_usuario();
+      Cargar_Select_Area();
+      var ida = $("#select_agno").val();
+      // Cargar_Select_Agno(ida)
       $(document).ready(function() {
           $('.js-example-basic-multiple').select2();
-          Cargar_Select_Usuario();
-          Cargar_Select_Area();
+         // Cargar_Select_Agno();
       });
     </script>
    

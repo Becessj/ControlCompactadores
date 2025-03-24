@@ -61,6 +61,20 @@
             conexionBD::cerrar_conexion();
 
         }
+        public function Cargar_Select_Agno(){
+            $c = conexionBD::conexionPDO();
+            $sql = "select agno from valores_anuales order by 1 desc";
+            $arreglo = array();
+            $query = $c -> prepare($sql);
+            $query -> execute();
+            $resultado = $query -> fetchAll();
+            foreach($resultado as $resp){
+                $arreglo[] = $resp;
+            }
+            return $arreglo;
+            conexionBD::cerrar_conexion();
+
+        }
         public function Registrar_Usuario($nombecompleto,$usu,$con,$direc,$ida,$rol){
             $c = conexionBD::conexionPDO();
             $sql = "exec SP_REGISTRAR_USUARIO ?,?,?,?,?,?";

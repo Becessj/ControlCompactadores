@@ -1,11 +1,12 @@
 var tbl_area;
 function listar_area(){
     tbl_area = $("#tabla_area").DataTable({
-        "ordering":false,   
+      "ordering":false,   
         "pageLength": 10,
         "destroy":true,
         "async": false ,
-        "processing": true,
+        "responsive": true,
+    	  "autoWidth": false,
         "ajax":{
             "url":"../Controller/area/controller_listar_area.php",
             type:'POST'
@@ -26,7 +27,7 @@ function listar_area(){
             {"defaultContent":"<button class='editar btn btn-primary'><i class='fa fa-edit'></i></button>"} 
           ],
           "language":idioma_espanol,
-        select: false
+          select: false
     });
     tbl_area.on('draw.td',function(){
       var PageInfo = $("#tabla_area").DataTable().page.info();

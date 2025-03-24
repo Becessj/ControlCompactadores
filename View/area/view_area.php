@@ -46,8 +46,8 @@
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Inicio</a></li>
-              <li class="breadcrumb-item active">Area</li>
+            <li class="breadcrumb-item"><a href="index.php" ><i class="fa fa-home"></i> Inicio</a></li>
+          <li class="breadcrumb-item active"> &Aacute;rea</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -63,21 +63,21 @@
           <div class="col-lg-12">
             <div class="card">
               <div class="card-header">
-                <h5 class="card-title"><b>Listado de Areas</b></h5>
-                <button class="btn btn-danger btn-sm float-right" onclick="AbriRegistro()"><i class="fas fa-plus"></i> Nuevo Registro</button>
+                  <h3 class="card-title"><b>Listado de Areas</b></h5>
+                  <button class="btn btn-danger btn-sm float-right" onclick="AbriRegistro()"><i class="fas fa-plus"></i> Nuevo Registro</button>
               </div>
               <div class="card-body">
-              <table id="tabla_area" class="display" style="width:100%">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>AREA</th>
-                <th>FECHA REGISTRO</th>
-                <th>ESTADO</th>
-                <th>Acción</th>
-            </tr>
-        </thead>
-    </table>
+              <table id="tabla_area" style="table-layout:fixed;width: 100%" class="table tabel-display table-nowrap">
+                  <thead>
+                      <tr>
+                          <th>#</th>
+                          <th>AREA</th>
+                          <th>FECHA REGISTRO</th>
+                          <th>ESTADO</th>
+                          <th>Acción</th>
+                      </tr>
+                  </thead>
+              </table>
               </div>
             </div>
 
@@ -87,7 +87,7 @@
         </div>
         <!-- /.row -->
       </div><!-- /.container-fluid -->
-    </section>
+</section>
     <!-- /.content -->
 <!-- Modal -->
 <div class="modal fade" id="modal_registro" data-backdrop="static" data-keyboard="false" tabindex="-1″ id="MiModal" role="dialog">

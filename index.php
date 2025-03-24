@@ -9,7 +9,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Sistema de Limpieza Publica | Log in</title>
+  <title>Sistema de Control de Compactadores | Log in</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -19,11 +19,37 @@
   <link rel="stylesheet" href="template/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="template/dist/css/adminlte.min.css">
+  <style>
+    body {
+      background: url('./assets/fondolog.png') no-repeat center center fixed;
+      background-size: cover;
+    }
+
+    .login-box {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    @media (max-width: 768px) {
+      .login-box {
+        width: 90%;
+      }
+    }
+
+    .nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+    color: #fff;
+    background: #007bff linear-gradient(180deg, #268fff, #007bff) repeat-x !important;
+}
+
+  </style>
 </head>
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="template/index2.html"><b>Sistema </b>Limpieza Pública</a>
+    <a href="template/index2.html"><b>Sistema </b>Control de Compactadores</a>
   </div>
   <!-- /.login-logo -->
   <div class="card">
@@ -78,7 +104,7 @@
 <!-- AdminLTE App -->
 <script src="template/dist/js/adminlte.min.js"></script>
 <script src="js/console_usuario.js?rev=<?php echo time();?>"></script>
-<script src="js/console_area.js"></script>
+<script scr="../js/console_empleado.js"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
   const rmcheck = document.getElementById('remember'),
@@ -94,6 +120,16 @@
           usuarioInput.value="";
           passInput.value ="";
         }
+
 </script>
+<script>
+  $(document).ready(function () {
+    $(".nav-link").click(function () {
+      $(".nav-link").removeClass("active");
+      $(this).addClass("active");
+    });
+  });
+</script>
+
 </body>
 </html>

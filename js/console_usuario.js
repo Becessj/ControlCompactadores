@@ -32,18 +32,7 @@ function Iniciar_Sesion(){
                     location.reload();
                   });
             }
-            if(data[0][3] != "PREDIAL"){
-                return Swal.fire({
-                    icon: 'warning',
-                    title:'Mensaje de advertencia',
-                    text: 'El usuario '+data[0][0]+' no pertenece al área de limpieza publica',
-                     heightAuto: false}
-                ).then((result) => {
-                    // Reload the Page
-                    location.reload();
-                  });
-            }
-   
+
             $.ajax({
                 url:'Controller/usuario/controller_crear_sesion.php',
                 type: 'POST',
@@ -51,6 +40,8 @@ function Iniciar_Sesion(){
                     usuario:data[0][0],
                     nombre:data[0][1],
                     rol: data[0][3],
+                    tipo: data[0][5],
+                    clave: Math.floor(Math.random() * 1000000) + 1
                 }
     
             }).done(function(resp){
@@ -98,13 +89,11 @@ var tbl_usuario;
 function listar_usuario(){
     tbl_usuario = $("#tabla_usuario").DataTable({
         "ordering":false,   
-        "bLengthChange":true,
-        "searching": { "regex": false },
-        "lengthMenu": [ [10, 25, 50, 100, -1], [10, 25, 50, 100, "All"] ],
         "pageLength": 10,
         "destroy":true,
         "async": false ,
-        "processing": true,
+        "responsive": true,
+    	"autoWidth": false,
         "ajax":{
             "url":"../controller/usuario/controller_listar_usuario.php",
             type:'POST'
@@ -137,7 +126,6 @@ function listar_usuario(){
         cell.innerHTML = i + 1 + PageInfo.start;
       });
     });
-  
 }
 $('#tabla_usuario').on('click','.editar',function(){
     var data = tbl_usuario.row($(this).parents('tr')).data();//Detecta a que fila hago click y me captura los datos en la variable data.
@@ -166,26 +154,7 @@ function recuerdame(){
             localStorage.checkbox = "";
     }
 }
-function Cargar_Select_Usuario(){
-    $.ajax({
-        "url":"../Controller/usuario/controller_cargar_select_usuario.php",
-        type:'POST'
-    }).done(function(resp){
-        let data=JSON.parse(resp);
-        if(data.length>0){
-            let cadena="";
-            for(let i=0;i<data.length;i++){
-                cadena +=  "<option value='"+data[i][0]+"'>"+data[i][0]+"</option>";
-            }
-            document.getElementById('select_usuario').innerHTML=cadena;
-        }
-        else{
-            cadena +=  "<option value=''>No hay empleados</option>";
-            document.getElementById('select_usuario').innerHTML=cadena;
-        }
-    })		
-	
-}
+
 function Cargar_Select_Area(){
     $.ajax({
         "url":"../Controller/usuario/controller_cargar_select_area.php",
@@ -206,6 +175,7 @@ function Cargar_Select_Area(){
     })		
 	
 }
+
 function Registrar_Usuario(){
     var nomb = $("#txt_nombres").val();
     var apaterno = $("#txt_apaterno").val();
@@ -315,7 +285,22 @@ function AbrirModalRegistro() {
     $("#modal_registro_usuario").modal('show');
   }
 
-  function AbrirModalRegistro() { 
-    $("#modal_registro_usuario").modal({backdrop: 'static',keyboard:false})
-    $("#modal_registro_usuario").modal('show');
-  }
+
+function Traer_Consumo_Mensual() {
+    $.ajax({
+        url: "../Controller/combustible/controller_combustible.php",
+        type: "POST",
+        data: { action: "consumo_mensual"},
+        success: function (response) {
+            let resp = JSON.parse(response);
+            if (resp.success) {
+                $("#combustible_mensual").html(data[0][0]);
+            } else {
+                Swal.fire("Error", "xx", "error");
+            }
+        },
+        error: function () {
+            Swal.fire("Error", "Problema en la conexión con el servidor", "error");
+        }
+    });
+}
