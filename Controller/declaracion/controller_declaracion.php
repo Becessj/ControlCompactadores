@@ -21,7 +21,7 @@ if ($action === "registrar") {
     $ruta_archivo = "";
 
     // ✅ Extraer el año de la fecha
-    $anioExpiracion = date("Y", strtotime($fecha));
+    $anioExpiracion = date("Y");
 
     // ✅ Verificar si hay un archivo
     if (!isset($_FILES['archivo']) || $_FILES['archivo']['error'] !== UPLOAD_ERR_OK) {
@@ -33,6 +33,7 @@ if ($action === "registrar") {
     $archivo = $_FILES['archivo'];
     $extension = pathinfo($archivo['name'], PATHINFO_EXTENSION); // Obtiene la extensión del archivo
     $nombreArchivo = "{$placa}-{$anioExpiracion}-DECLARACION.{$extension}"; // Genera el nuevo nombre
+    
     $rutaCarpeta = __DIR__ . "/uploads/declaracionesjuradas/";
 
     // ✅ Asegurar que la carpeta `uploads/declaracionesjuradas/` existe

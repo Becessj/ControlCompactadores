@@ -293,12 +293,14 @@
           </div>
 
           <!-- Subir Nuevo Documento -->
-          <!-- Subir Nuevo Documento -->
           <div class="col-sm-12">
-              <label>Actualizar Documento (PDF):</label>
-              <input type="file" class="form-control" id="edit_archivo_documento" name="archivo" accept=".pdf">
-              <small id="nombre_archivo_actual" class="form-text text-muted"></small>
+            <label>Actualizar Documento (PDF):</label>
+            <div class="custom-file">
+              <input type="file" class="custom-file-input is-valid" id="edit_archivo_documento" name="archivo" accept=".pdf">
+              <label class="custom-file-label" for="edit_archivo_documento" id="edit_archivo_label">DECLARACION.pdf</label>
+            </div>
           </div>
+
 
 
           </div>

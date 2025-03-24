@@ -42,9 +42,29 @@ if (!isset($_SESSION['S_ID'])) {
         </div>
     </div>
 </section>
-
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Documentos Próximos a Expirar</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart">
+                            <figure class="highcharts-figure">
+                                <div id="container_documentos_proximos_a_expirar"></div>
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="../js/console_reportes.js"></script>
 <script>
     graficos_compactadores_documentacion();
+    graficos_documentos_proximos_a_expirar();
 </script>

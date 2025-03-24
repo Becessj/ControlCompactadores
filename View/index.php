@@ -308,8 +308,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                       <p> Repuestos </p>
                     </a>
                   </li>
-
-
                   <li class="nav-item">
                     <a href="javascript:cargar_contenido('contenido_principal','combustible/view_combustible.php')" class="nav-link">
                       <i class="nav-icon ion ion-beaker"></i>
@@ -399,21 +397,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   </li>
 
                   <li class="nav-item">
-                    <a href="javascript:cargar_contenido('contenido_principal','reportes/view_reporte_cantidad_repuestos.php')" class="nav-link">
-                    <i class="nav-icon fas fa-chart-bar"></i>
-                      <p> Cantidad Repuestos </p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
                     <a href="javascript:cargar_contenido('contenido_principal','reportes/view_reporte_tipo_mantenimientos.php')" class="nav-link">
                     <i class="nav-icon fas fa-chart-bar"></i>
                       <p> Tipo de Mantenimiento </p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="javascript:cargar_contenido('contenido_principal','reportes/view_reporte_expiracion_documentos.php')" class="nav-link">
-                    <i class="nav-icon fas fa-chart-bar"></i>
-                      <p> Documentos a expirar </p>
                     </a>
                   </li>
                   <li class="nav-item">

@@ -6,18 +6,22 @@ function validarCamposFormulario(formularioID) {
 
     formulario.find("input, select, textarea").each(function () {
         var elemento = $(this);
-        // Ignorar los campos deshabilitados, de solo lectura, ocultos o no visibles
-        if (elemento.prop("disabled") || elemento.prop("readonly") || elemento.attr("type") === "hidden" || !elemento.is(":visible")) {
+
+        // Ignorar campos deshabilitados, readonly, hidden o no visibles
+        if (
+            elemento.prop("disabled") ||
+            elemento.prop("readonly") ||
+            elemento.attr("type") === "hidden" ||
+            !elemento.is(":visible")
+        ) {
             elemento.addClass("is-valid").removeClass("is-invalid");
-            return; // Saltar este campo
+            return;
         }
-        // Validar radio buttons
+
+        // Validar input type="radio"
         if (elemento.is(":radio")) {
             var name = elemento.attr("name");
-            // Validar solo una vez por grupo de radio buttons
-            if ($("input[name='" + name + "']").first().data("checked-validated")) {
-                return;
-            }
+            if ($("input[name='" + name + "']").first().data("checked-validated")) return;
 
             if ($("input[name='" + name + "']:checked").length === 0) {
                 $("input[name='" + name + "']").addClass("is-invalid").removeClass("is-valid");
@@ -26,10 +30,10 @@ function validarCamposFormulario(formularioID) {
             } else {
                 $("input[name='" + name + "']").addClass("is-valid").removeClass("is-invalid");
             }
-            // Marcar este grupo como validado
+
             $("input[name='" + name + "']").first().data("checked-validated", true);
         }
-        // Validar checkboxes (deben estar marcados si son obligatorios)
+        // Validar input type="checkbox"
         else if (elemento.is(":checkbox")) {
             if (!$("input[name='" + elemento.attr("name") + "']:checked").length) {
                 elemento.addClass("is-invalid").removeClass("is-valid");
@@ -41,7 +45,7 @@ function validarCamposFormulario(formularioID) {
                 elemento.addClass("is-valid").removeClass("is-invalid");
             }
         }
-        // Validar emails (formato correcto)
+        // Validar input type="email"
         else if (elemento.attr("type") === "email") {
             var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailRegex.test(elemento.val().trim())) {
@@ -52,6 +56,25 @@ function validarCamposFormulario(formularioID) {
                 elemento.addClass("is-valid").removeClass("is-invalid");
             }
         }
+        // Validar input type="file"
+        else if (elemento.attr("type") === "file") {
+            if (elemento[0].files.length === 0) {
+                // Buscar <small> justo después del input que contenga el nombre del archivo actual
+                var small = elemento.siblings("small").text().trim();
+
+                if (small.toLowerCase().includes("archivo actual") && small.length > 0) {
+                    elemento.addClass("is-valid").removeClass("is-invalid");
+                } else {
+                    elemento.addClass("is-invalid").removeClass("is-valid");
+                    camposVacios = true;
+                    var label = $("label[for='" + elemento.attr("id") + "']").text().trim();
+                    camposFaltantes.push(label || elemento.attr("name") || "Archivo requerido");
+                }
+            } else {
+                elemento.addClass("is-valid").removeClass("is-invalid");
+            }
+        }
+
         // Validar otros campos (text, select, textarea)
         else if (elemento.val().trim().length === 0) {
             elemento.addClass("is-invalid").removeClass("is-valid");
@@ -65,7 +88,7 @@ function validarCamposFormulario(formularioID) {
 
     if (camposVacios) {
         console.warn("Errores en el formulario:", camposFaltantes);
-        Swal.fire("Error", "Todos los campos son obligatorios", "error");
+        Swal.fire("Error", "Tiene campos vacíos o inválidos:\n" + camposFaltantes.join(", "), "error");
         return false;
     }
     return true;

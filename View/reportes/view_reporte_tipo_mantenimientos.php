@@ -63,8 +63,27 @@ if (!isset($_SESSION['S_ID'])) {
     </div>
 </section>
 
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="chart">
+                            <figure class="highcharts-figure">
+                                <div id="container_repuestos_tiempo"></div>
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="../js/console_reportes.js"></script>
 <script>
     graficos_mantenimientos_tipo_por_fecha();
+    graficos_consumo_repuestos_tiempo();
 </script>

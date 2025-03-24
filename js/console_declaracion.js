@@ -87,6 +87,11 @@ $(document).ready(function () {
             $("#grupo_fecha_fin").val(""); // Limpiar el campo inválido
         }
     });
+    $('#edit_archivo_documento').on('change', function () {
+        var nombreArchivo = $(this).val().split('\\').pop();
+        $('#edit_archivo_label').text(nombreArchivo);
+    });
+    
         
 });
 
@@ -333,18 +338,21 @@ function abrirModalEditar(data) {
     $("#edit_txt_cantidad").val(data.PESO_NETO);
     $("#edit_txt_observaciones").val(data.OBSERVACIONES);
     if (data.RUTA_ARCHIVO && data.RUTA_ARCHIVO !== "") {
-        let rutaArchivo = `../Controller/declaracion/uploads/declaracionesjuradas/${data.RUTA_ARCHIVO}`; 
+        let nombreArchivo = data.RUTA_ARCHIVO;
+        let rutaArchivo = `../Controller/declaracion/uploads/declaracionesjuradas/${nombreArchivo}`; 
+    
         $("#archivo_actual").html(
             `<a href="${rutaArchivo}" target="_blank" class="btn btn-sm btn-primary">Ver Documento Actual</a>
-            <input type="hidden" id="edit_archivo_actual" name="archivo_actual" value="${data.RUTA_ARCHIVO}">`
+            <input type="hidden" id="edit_archivo_actual" name="archivo_actual" value="${nombreArchivo}">`
         );
-
-        // Mostrar nombre del archivo al costado del input file
-        $("#nombre_archivo_actual").text(`Archivo actual: ${data.RUTA_ARCHIVO}`);
+    
+        // Mostrar el nombre del archivo en el label del input file
+        $("#edit_archivo_label").text(nombreArchivo);
     } else {
         $("#archivo_actual").html(`<p class="text-muted">No hay documento adjunto.</p>`);
-        $("#nombre_archivo_actual").text("");
+        $("#edit_archivo_label").text("Seleccionar archivo");
     }
+    
 
 }
 function formatearHora(hora) {
