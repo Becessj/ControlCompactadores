@@ -26,9 +26,6 @@ if (!isset($_SESSION['S_ID'])) {
         <div class="row">
             <div class="col-12">
                 <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">Consumo de Combustible</h3>
-                    </div>
                     <div class="card-body">
                         <div class="chart">
                             <figure class="highcharts-figure">

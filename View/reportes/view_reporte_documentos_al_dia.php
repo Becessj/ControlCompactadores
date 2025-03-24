@@ -24,44 +24,32 @@ if (!isset($_SESSION['S_ID'])) {
 <section class="content">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">Estado de Documentación de Compactadores</h3>
-                    </div>
+            <!-- 🔹 CARD 1: Documentación de Compactadores -->
+            <div class="col-lg-6 col-md-12 mb-4">
+                <div class="card h-100">
                     <div class="card-body">
-                        <div class="chart">
-                            <figure class="highcharts-figure">
-                                <div id="container_compactadores_documentacion"></div>
-                            </figure>
-                        </div>
-                        <div id="lista_compactadores"></div> <!-- Aquí se mostrará la lista de compactadores -->
+                        <figure class="highcharts-figure">
+                            <div id="container_compactadores_documentacion"></div>
+                        </figure>
+                        <div id="lista_compactadores"></div> <!-- Lista adicional -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- 🔹 CARD 2: Documentos Próximos a Expirar -->
+            <div class="col-lg-6 col-md-12 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <figure class="highcharts-figure">
+                            <div id="container_documentos_proximos_a_expirar"></div>
+                        </figure>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
-<section class="content">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">Documentos Próximos a Expirar</h3>
-                    </div>
-                    <div class="card-body">
-                        <div class="chart">
-                            <figure class="highcharts-figure">
-                                <div id="container_documentos_proximos_a_expirar"></div>
-                            </figure>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="../js/console_reportes.js"></script>
 <script>

@@ -390,13 +390,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="javascript:cargar_contenido('contenido_principal','reportes/view_reporte_repuestos.php')" class="nav-link">
-                    <i class="nav-icon fas fa-chart-bar"></i>
-                      <p>Repuestos por Compactador</p>
-                    </a>
-                  </li>
-
-                  <li class="nav-item">
                     <a href="javascript:cargar_contenido('contenido_principal','reportes/view_reporte_tipo_mantenimientos.php')" class="nav-link">
                     <i class="nav-icon fas fa-chart-bar"></i>
                       <p> Tipo de Mantenimiento </p>

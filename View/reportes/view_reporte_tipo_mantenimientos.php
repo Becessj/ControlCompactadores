@@ -24,18 +24,16 @@ if (!isset($_SESSION['S_ID'])) {
 <section class="content">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-12">
-                <div class="card">
+            <!-- 🔹 CARD 1: Mantenimientos por tipo -->
+            <div class="col-lg-6 col-md-12 mb-4">
+                <div class="card h-100">
                     <div class="card-header">
                         <h3 class="card-title">Cantidad de Mantenimientos por Tipo</h3>
                         <div class="float-right">
-                         <select id="select_mes" class="form-control">
+                            <select id="select_mes" class="form-control">
                                 <?php
-                                $meses = [
-                                    "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
-                                    "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
-                                ];
-
+                                $meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+                                          "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
                                 for ($i = 1; $i <= 12; $i++): ?>
                                     <option value="<?= str_pad($i, 2, '0', STR_PAD_LEFT); ?>" <?= ($i == date('m')) ? 'selected' : ''; ?>>
                                         <?= $meses[$i - 1]; ?>
@@ -51,29 +49,31 @@ if (!isset($_SESSION['S_ID'])) {
                         </div>
                     </div>
                     <div class="card-body">
-                        <div class="chart">
-                            <figure class="highcharts-figure">
-                                <div id="container_mantenimientos_tipo_por_fecha"></div>
-                            </figure>
-                        </div>
+                        <figure class="highcharts-figure">
+                            <div id="container_mantenimientos_tipo_por_fecha"></div>
+                        </figure>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-</section>
 
-<section class="content">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-12">
-                <div class="card">
+            <!-- 🔹 CARD 2: Repuestos en el tiempo -->
+            <div class="col-lg-6 col-md-12 mb-4">
+                <div class="card h-100">
                     <div class="card-body">
-                        <div class="chart">
-                            <figure class="highcharts-figure">
-                                <div id="container_repuestos_tiempo"></div>
-                            </figure>
-                        </div>
+                        <figure class="highcharts-figure">
+                            <div id="container_repuestos_tiempo"></div>
+                        </figure>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 🔹 CARD 3: Comparación de repuestos -->
+            <div class="col-lg-6 col-md-12 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <figure class="highcharts-figure">
+                            <div id="container_repuestos_compactador"></div>
+                        </figure>
                     </div>
                 </div>
             </div>
@@ -86,4 +86,5 @@ if (!isset($_SESSION['S_ID'])) {
 <script>
     graficos_mantenimientos_tipo_por_fecha();
     graficos_consumo_repuestos_tiempo();
+    graficos_repuestos_compactador();
 </script>

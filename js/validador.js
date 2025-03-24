@@ -18,7 +18,7 @@ function validarCamposFormulario(formularioID) {
             return;
         }
 
-        // Validar input type="radio"
+        // Validar radio buttons
         if (elemento.is(":radio")) {
             var name = elemento.attr("name");
             if ($("input[name='" + name + "']").first().data("checked-validated")) return;
@@ -33,7 +33,7 @@ function validarCamposFormulario(formularioID) {
 
             $("input[name='" + name + "']").first().data("checked-validated", true);
         }
-        // Validar input type="checkbox"
+        // Validar checkboxes
         else if (elemento.is(":checkbox")) {
             if (!$("input[name='" + elemento.attr("name") + "']:checked").length) {
                 elemento.addClass("is-invalid").removeClass("is-valid");
@@ -45,7 +45,7 @@ function validarCamposFormulario(formularioID) {
                 elemento.addClass("is-valid").removeClass("is-invalid");
             }
         }
-        // Validar input type="email"
+        // Validar emails
         else if (elemento.attr("type") === "email") {
             var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailRegex.test(elemento.val().trim())) {
@@ -56,26 +56,24 @@ function validarCamposFormulario(formularioID) {
                 elemento.addClass("is-valid").removeClass("is-invalid");
             }
         }
-        // Validar input type="file"
+        // Validar archivos
         else if (elemento.attr("type") === "file") {
-            if (elemento[0].files.length === 0) {
-                // Buscar <small> justo después del input que contenga el nombre del archivo actual
-                var small = elemento.siblings("small").text().trim();
+            var tieneArchivo = elemento[0].files.length > 0;
 
-                if (small.toLowerCase().includes("archivo actual") && small.length > 0) {
-                    elemento.addClass("is-valid").removeClass("is-invalid");
-                } else {
-                    elemento.addClass("is-invalid").removeClass("is-valid");
-                    camposVacios = true;
-                    var label = $("label[for='" + elemento.attr("id") + "']").text().trim();
-                    camposFaltantes.push(label || elemento.attr("name") || "Archivo requerido");
-                }
+            // Buscar etiqueta visual con clase .custom-file-label
+            var label = formulario.find("label.custom-file-label[for='" + elemento.attr("id") + "']");
+            var textoLabel = label.text().trim();
+
+            // Validar si hay archivo o al menos se muestra algo en el label
+            if (!tieneArchivo && (textoLabel === "" || textoLabel.toLowerCase() === "seleccione archivo")) {
+                elemento.addClass("is-invalid").removeClass("is-valid");
+                camposVacios = true;
+                camposFaltantes.push("Archivo requerido");
             } else {
                 elemento.addClass("is-valid").removeClass("is-invalid");
             }
         }
-
-        // Validar otros campos (text, select, textarea)
+        // Otros campos
         else if (elemento.val().trim().length === 0) {
             elemento.addClass("is-invalid").removeClass("is-valid");
             camposVacios = true;

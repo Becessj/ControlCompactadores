@@ -42,7 +42,7 @@ function graficos_consumo_combustible() {
             },
             tooltip: {
                 headerFormat: '<b>{point.category}</b><br/>',
-                pointFormat: '{series.name}: {point.y} L'
+                pointFormat: '{series.name}: {point.y} Galones'
             },
             plotOptions: {
                 column: { 
